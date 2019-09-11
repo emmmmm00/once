@@ -1,0 +1,399 @@
+
+
+	<!--
+一、html
+	1.认识网页与浏览器
+		网页的构成：文字、图片、音频、超链接、视频flash构成
+		市面上常见的五大浏览器：ie 火狐 谷歌 safari opera 
+		浏览器内核：Trident   gecko webkit bink
+	2.网页的构成：结构html css样式 行为Javascript
+		html :超文本标记语言
+	标签：
+		双标签：a
+				标题标签：h1-h6 特点：默认给文字加粗，字体变大；独占一行；h1-h6字体依次减小,书写格式:<h1></h1>
+				段落标签：p 	特点： 独占一行，不会改变字体大小，或根据浏览器的窗口大小折行;书写格式:<p></p>
+				起强调的标签：	倾斜i=em;加粗b=strong;下划线u=ins;删除线 s=del;
+				a标签 	：a     书写格式：<a href="#"></a>; href指定要跳转的网址，如果#后面跟类名则可以作为锚点定位来使用；
+										#后面的类名就是跳转地点的ID名；
+								属性：target{_blank 在新窗口打开连接/_self在本网页打开连接}
+								特点：默认文字带有下划线，文字的颜色变为蓝色，鼠标放上变为小手，页面直接可以跳转，图片也可以设为
+									连接
+								base 使用<base target="_blank" />  属于单标签；设置网页内的所有a标签在新网页打开
+				文本域标签：textarea
+								特点：现在多数浏览器可以在输入内容后自己拉动盒子大小
+								书写格式：<textarea name="类型名" id="" cols="列" rows="行">文本域中显示的提示内容</textarea>
+				label标签：		书写格式：<label for=""></label>
+								作用：绑定表单元素，当点击label标签时，被绑定的表单会获得焦点
+								用法：直接包裹需要获得焦点的标签
+				列表：  分为三类： 有序列表	、无序列表、自定义列表，内部可包裹多个li标签，li标签与父元素之间不允许存在第三者
+						有序列表：！！！！！！	;特点：显示内容会根据内部li标签的顺序显示排序数值，一般用于排名
+						无序列表：<ul><li></li></ul>;特点：显示内容无排序，每个li前会显示小圆点，多用于网站内容展示
+						自定义列表: <dl><dt><dd></dd></dt></dl>;特点：dt与dd属于兄弟关系，dd是对于dt的描述,多用于网页底部产品描述
+				表格标签：table 		thead表头   tbody主体内容   tfoot表格的底部
+						表格的构成：行标签；<tr></tr>  单元格标签：<td></td>  表头标签：th默认文字加粗，显示居中
+									整个表格的表格名称：caption直接显示在表格上方，居中；
+									书写方式：<table><tr><td></td></tr></table>
+						表格的属性：cellspacing="0"设置表格单元格与单元格之间的距离
+									cellpadding="1"设置表格内容与表格边框的距离
+									border设置表格的边框线的大小 border:1px;
+									width:表格的宽度
+									height:表格的宽度
+									表格的对齐方式：align="left/center/right"
+
+
+
+		单标签：
+				换行标签：br 	书写格式:<br />`	
+				下划线标签：hr  书写格式：<hr />
+				img标签： img   书写格式：<img src="图片路径" alt="图片未加载的反馈值" width="" height="" 
+								title="鼠标放上的显示值" />
+								src必写条件  有绝对路径、相对路径和网络路径，其中因为地址的变动网络路径和绝对路径一般不使用
+				base标签：		书写格式：<base target="_blank" /> ；设置网页内的所有a标签在新网页打开
+				input标签：		属于表单元素。
+				视频标签：embed 
+								书写：<embed src="视频地址" type="" />
+								作用：用来插入多媒体文件
+	特殊字符: 
+				大于号：&gt;
+				小于号：&lt;
+				空格号：&nbsp;
+				商标号：copy;
+	表单元素：  作用：收集用户信息;组成： 提示信息、表单控件、表单域
+				form表单域：
+					作  用：定义表单域，就是创建一个表单，实现哟用户信息的收集和传递，form表单中的所有内容都会被提交给服务器
+					用  法：<form action="服务器地址" method="get/post" name="表单名称">所有表单控件</form>;method 
+							提交方式get没有post安全;get会在网页地址后面显示值，post不显示。
+							其中：submit和reset只有在表单域中才能起作用。
+				input：name值用于区分控件的类型
+					文本框：<input type="text" name="username"/>; 属性:可以设置value默认值
+					密码框：<input type="password" name="password" id="" />;属性:可以设置value默认值
+					单选框：<input type="radio" name="选项是一组的必须同一个name值表示" id="" checked="checked默认选中" />
+					复选框： <input type="checkbox" name="选项是一组的必须设置同一个name值" id="" checked="checked默认选中" />
+					普通按钮:<input type="button" value="" />;可以设置value默认值;也就是按钮上显示的值。
+					提交按钮: <input type="submit" value="" />;默认显示提交两字，可以设置value值更改显示的字；只能在表单域使用
+					重置按钮：<input type="reset" value="" />;默认显示重置；可设置value默认值；只能在表单域使用，功能重置
+					图片形式的按钮：<input type="image" src="图片路径" alt="未加载出是反馈的值" />
+					上传文件：<input type="file" name="" id="" />
+				label标签：
+					作用：绑定表单元素，当点击label标签时，被绑定的表单会获得焦点
+					用法：直接包裹需要获得焦点的标签
+				文本域：textarea  
+					作用：收集用户大量信息
+					书写方式：<textarea name="此文本域的类型" id="" cols="列" rows="行">提示信息</textarea>
+				下拉列表：select，option
+					属性：select内部至少包含一个option;<select name="书写名" id=""></select>; selected默认选中书写在option内
+							<option value="反馈给服务器的值">显示在下拉列表的值</option>
+							因为现在兼容性问题，很少使用
+				多媒体：embed
+						书写：<embed src="视频地址" type="" />
+						作用：用来插入多媒体文件
+二、css样式 
+	css的文本属性
+		字间    距：letter-spacing:   也对字母管用，会显示单个字母与字母之间的距离，默认值为normal
+		单词  间距：word-spacing:  只对单词管用，对汉字无效，值可以设置为赋值,默认值为normal
+		自动  换行：word-break:   	break-all允许在单词内换行;keep-all只能在半角或者连字符出换行
+		空白符处理：white-spacing:
+					per预格式化，按照文档的书写格式显示，保留文档内部的样式，如空格，空行等元素 
+					nowrap空格和空行无效，强制不换行，除非遇到<br />换行标签才换行。
+			text-overflow文字溢出
+					clip：不显示的文字，用省略号表示（...）属于简单裁剪
+					ellipsis：当文档的内容溢出时显示省略号(...)
+	三大块和三大特性；
+					三大块包括：盒子模型，浮动和定位；
+					三大特性  ：继承性、层叠性、优先级
+	css样式表:又叫 cc层叠样式表主要写书写设置网页字体大小颜色 样式   类别等
+	样式：	
+		有关字体的样式：
+			font 、text、line-height  
+			font-family： 字体样式  Microsoft YaHei
+			font-size  :  字体大小以px 结束
+			font-style :  italic 字体倾斜 或者normal；
+			font-weight:  是否加粗bold=700 normal=400;数值的可用属性100-900；并且使用数值不带单位
+			font的连写的综合设定：font-style font-weight font-size/line-height font-family
+			font的必写属性：font-size font-family
+			text-indent: 首行缩进
+			text-align:  首行水平位置后缀居中；左对齐；右对齐等；left center right
+			text-decoration:主要用于制定文字是否需要下滑线等：none ，underline 下划线；line-through;overline上划线
+			color:       gary yellow green red blue purple pink等等也可以用十六进制来书写。
+			line-height: 文字段落的行间距也就是行高，行高与盒子高度相等时，文字在盒子中垂直居中
+						行高有单位和不带单位的区别：有单位由父元素根据父元素的字体大小先计算后，子元素继承父元素字体大小
+								没单位，父元素不计算，直接将倍数丢给子元素，子元素用自己的字体大小乘倍数就是行高
+			字体样式继承不能改变的是：h标签的大小，a标签的颜色*************
+		其它样式：
+			取消列表自带的小点：list-style：none;
+			overflow:  三个点：hidden隐藏多余出来的内容
+								auto自适应大小，内容过多时会显示滚动条；
+								scroll滚动，不管内容多少都显示滚动条；
+			背景色半透明：
+					background:rgba(0.,0,0,0.3);背景半透明值为0-1之间；
+		
+	选择器：
+			分类：1标签选择器 2.类选择器 3.id选择器 4.交集选择器 5.并列选择器 6.后代选择器 7.子元素选择器 8.通配符选择器
+
+			1.标签选择器 ：标签后面{}内直接书写样式 如:p{}
+			2.类选择器   : 以点开头 一般是在标签内给与一个class="值";以class内的值作为书写如： .值 {内书写样式}
+							这类选择器可被多次使用，主要是上写下调用。
+							命名规范：不能以数字开头、不能使用汉字尽量不适用拼音、不使用标签名
+			3.id选择器   ：一般一个Id只使用一次 ，以#开头加ID名 ，并且在标签内部添加Id就可应用。只能出现一次不允许重复出现 
+			4.交集选择器 ：将各个属性名或者标签名以点连接(.)表示既什么又什么的意思
+			5.并列选择器 ：中间以逗号（，）连接，表示谁谁谁都具有这些属性。
+			6.后代选择器 ：以空格连接  如：div ul li 表示div里面的ul里面的li
+			7.子元素选择器：中间由大于号连接如：ul>li  表示只需要ul子的属性 至于li后面的属性都与之无关。
+			8.通配符选择器：*开头直接*{书写内容}，表示所有的内容都适应这个属性但是这个的级别最低、
+	元素的显示方式：
+			分为：块级元素，行内元素，行内块元素
+			元素的转换方式：
+			display:block;  转换为块元素：独占一行，默认宽度为100%可以设置宽高；内部可以写内联元素和其他元素
+							特殊：p标签里面不能放块级元素，h1-h6，dt p div ul ol li dl
+			display:inline  转换为行级元素，一行可以显示多个，大小由内容撑开，不可以设置宽高，行内块元素只能容纳文本或者其他行
+							内元素，a标签特殊；a/strong/b/i/em/u/ins/s/del/span
+			display:inline-block    转换为行内块级元素，一行可以方式多个，默认大小由内容撑开，可以设置宽高，如：img/input/td
+	伪类与伪元素：
+		伪类：
+			:link	 未访问过的链接显示方式
+			:visited 访问过的显示状态
+			:hover 	 鼠标悬浮状态显示的样式
+			:active  鼠标点击到上面不松开时显示的样式
+			:focus   焦点获取
+			书写顺序：link-visited-hover-active
+		伪元素：
+			:fist-letter  给文本中第一个字设置样式
+			:fist-line	  给文本中第一行设置样式
+			**fiset-letter和fist-line伪元素只能用于 块级元素
+			:after  	  给元素前添加
+			:before		  给元素后添加  一般用于给元素前后添加闭合，用来清除浮动
+	css的三大特性
+		继承性、层叠性、优先级
+			1.继承性：可以继承的属性有===font开头的属性、text开头的属性、line开头的属性、div的宽度；
+					  特殊的有：a标签的颜色和h标签的大小不接受继承
+			2.层叠性：浏览器处理冲头属性的一种能力，下面的属性会层叠掉上面的属性
+			3.优先级：层叠性就是优先级的一种表现形式
+					  !important(不能被继承)>行内样式>id选择器>类选择器>标签选择器>通配符选择器>继承
+					  权重问题：用0,0
+					  0,0,0表示   在相同权重下考虑就近原则。位数之间没有进制
+					  			第一个0是!important的个数
+					  			第二个0是id选择器的个数
+					  			第三个0是类选择器的个数
+					  			第四个0是标签选择器的个数
+	背景设置
+			background-color:背景颜色 
+			background-repeat: 是否平铺  no-repeat repeat-x tepeat-y  repeat
+			background-img:url("");图片地址
+			background-position:x y;  背景位置的设置
+								设置具体位置：left center right bottom 
+								设置具体的数值：50% 20px; 
+								表示距离上右下左的距离，如果是一个值表示四面的距离，如果是两个值表示上跟左右的值；
+								如果是三个值则表示；上、左右、和下的值。
+								也可混搭书写。
+			background-attachment:设置背景是否固定还是跟随滚动：fixed固定  scrool滚动的。
+			背景的连写方式没有固定的但是一般建议：color repeat img position attachment来书写
+	盒子模型
+		网页布局的本质：就是将文字图片等网页元素放置到盒子里面，利用css摆放盒子的一个过程，就是网页布局
+		盒子模型分为三部分：border   margin    padding
+		1.border
+			盒子边框的设置：
+			border:width；边框大小粗细，单位是像素px;
+			border:style；字体样式 主要有：solid单实线 dashed虚线 dotted点线 double双实线 none无边框
+			border:color:
+			连写方式为：border:width style color;
+			border-collapse:collapse; 清除单元格之间的间隙***********************
+			outline:none:不需要轮廓线;
+		2.padding
+			padding内边距：设置盒子边框与内容之间的填充距离
+			padding：值px;  一个值代表：上下左右都是这个值；
+							两个值代表：上下、左右
+							三个值代表：上、左右、下
+							四个值代表：上、右、下、左
+			也可以单独设置:padding-left/top/right/bottom:10px;
+		3.margin
+			margin外边距：盒子与盒子的距离
+			margin: 10px;   一个值代表：上下左右都是10px；
+							两个值代表：上下、左右
+							三个值代表：上、左右、下
+							四个值代表：上、右、下、左
+			也可以单独设置margin-top   left   right   bottom
+			相邻盒子设置margin值 会取最大值 
+			外边距实现盒子居中：margin:0 auto ;   条件是：盒子必须是块级元素，并且盒子必有指定了宽度;
+			外边距合并问题：
+				产生的情况：1.相邻的两个盒子同时设置margin值    
+							  解决办法：只给一个盒子何止margin-tottom或者margin-top;
+							2.父子盒子同时设置margin值会取较大的margin值
+							  解决办法：父盒子设置边框/父盒子设置overflow:hidden;/给父盒子设置内边框padding值
+		4. margin:0; padding :0;清除浏览器默认的值===body、h、p、ul
+		5. 盒子宽高的计算：
+			盒子的宽高计算不用计算margin值
+				宽==border-left+padding-left+width+border-right+padding-right
+				高==border-top+padding-top+width+border-bottom+padding-bottom
+	浮动与清除浮动
+		浮动
+			浮动只有两种：  
+				左浮动：float:left;
+				右浮动：float:right;
+				默认值是none;
+			浮动的特点：
+				浮动：浮动最早出现的时候是为了解决图文混排的问题的后来在应用的过程中程序员发现浮动用于排版更为合适所以后面浮动主要就主要用在了网页布局上面了
+				1.浮动最初主要用来解决图文混排的后来多用于布局网页排版。
+				2.浮动分为左浮动和右浮动：float:left  float:right 被添加浮动的元素会脱离标准流，在页面上面不占位置，并且
+										  浮动的元素会在父元素的内边框内也就是padding内浮动但是不会超出内边框的值。
+				3.何为标准流：标准流就是块元素和行内元素一些特有的性质，在没有浮动之前，块元素只能是从上向下排列行元素只能
+							  横着排，并且行元素不能设置宽高，只能由内容来撑开。
+				4.浮动会改变元素的显示样式：被浮动的元素会具有行内快元素的特点，能够设置宽高；
+				5.浮动的元素会影响下面的元素，并且浮动具有对齐性，如若上元素不浮动下元素浮动，则没有变化；
+							  如上面的元素浮动下面的元素不浮动则浮动的元素会把位置让出来，使下面的元素叠加到上面原素的下面
+							  如果三个元素同时加浮动则会三个块元素会在同一行显示，显示顺序是根据所写盒子的顺序排序的、如果将三个盒子，改成右浮动也会从右至内按照所写盒子的顺序来排序显示盒子。
+				6.布局流：首先确定页面的版心：通栏；分析页面中的行模块以及确定每个行模块内的列模块；之后再着手写页面。
+		清除浮动
+			清除浮动的原因：解决父元素因子元素浮动引起的高度为零的问题。
+			方法：
+			1.额外标签法：
+				clear:both清除
+				使用方法：在浮动的元素末尾添加一个空盒子例：<div style="clear:both"></div>
+				现在不推荐使用，缺点：增加的额外标签太多。  优点是通俗易懂；
+			2.overflow 一般给父级元素添加，overflow:hidden;
+				优点是：代码简单；缺点是会隐藏一些元素，如内容增多后造成不会自动换行的内容被隐藏掉，无法显示溢出内容。
+				overflow三个点：hidden隐藏多余出来的内容
+								auto自适应大小，内容过多时会显示滚动条；
+								scroll滚动，不管内容多少都显示滚动条；
+ 			3.after伪元素清除浮动单伪元素清除或者双伪元素清除
+				3.1 单位元素消除浮动写法  .clearfix:after { content:".";  里面带·是防止低版本浏览器出现空格
+													display:block;
+													visibility:hidden; 
+													height:0;
+													clear:both;
+													}
+									.clearfix {
+										*zoom:1;  星号表示ie浏览器，此标签是ie浏览器专用。
+									}
+						display:none;		完全隐藏不保留位置
+						visibility:hidden;	隐藏后保留位置。
+		3.2 双伪元素消除浮动写法： .claerfix:after,.claerfix:before {
+																	content："";
+																	display:table;
+																	}
+			一般推荐使用双伪元素清除浮动			.claerfix:after {
+																	clear:both;
+													}
+													.clearfix {
+																	*zoom:1;
+															}
+	verticall-align
+		特点，verticall-align值一般设置给图片
+		verticall-align的值有：baseline基线对齐，top、middle、bottom
+		图片与文字对齐： verticall-align：top;顶部对齐
+						verticall-align：middle;垂直居中
+						verticall-align：baseline;与图片基线对齐
+		去除图片底侧的空白间隙
+				给图片设置verticall-align：top或者middle值
+				或者将图片转换为块元素：display:block;
+	用户界面cursor outline 文本域	
+		鼠标的样式 
+			cursor鼠标  defaul小白也就是默认样式，pointer小手  move 移动  text 文本
+		轮廓线outline
+			outline包括outline-color,outline-style,outline-width
+			outline:0;清除轮廓设置
+		文本域拖拽的去除
+			resize:none;
+	元素隐藏
+		overflow:hidden;    会将超出窗口部分剪切掉，隐藏掉
+		visibility:hidden;	将页面的元素隐藏起来，但还保留位置
+		dispay:none;		将元素完全隐藏，并不保留位置
+	定位与精灵图
+		定位：
+			作用：解决盒子之间的层叠问题
+			属性：top 、 left 、right、 bottom
+			模式：
+				position:static静态定位 作用是通常用来取消定位的
+				position:relative 相对定位
+						 属于标准流，占有位置以自己为中心来定位。
+				position:absolute 绝对定位
+					1:完全不占有位置，脱离标准流
+					2.如果父元素没有定位，则相对于浏览器定位
+					3.如果父级元素加了定位，则以父级为准。
+					4.子绝父相
+					父相的原因是占位置，但是不影响后面的元素；为了不让父级元素影响其他元素。
+			   	position:fixed  固定定位
+					特点：相对于浏览器来定位，只认浏览器  不受其他元素的影响。
+			模式转换
+				绝对定位和固定定位以后，元素的模式会发生转变，都会转为行内块模式，就可以设置宽高。
+		精灵图：
+			出现的原因：精灵图最初是以小图片的形式加载的因为当时网速的限制，所以一个一个加载，服务器频繁请求，压力大；现在			  网速上来了，所以就要解决服务器压力过大的问题，减少频繁请求服务器的次数，减少服务器的压力，所以就产
+						生了精灵图，将所有小图片全部设置在一张图片上，只需要加载一次。
+			本	质：就是将一些小的图放到一张大图上面去，用户访问时只需要请求一次，网页上的背景图片就会全部显示出来
+			使 	用：background-image:url("图片路径");	
+					background-repeat:是否平铺
+					background-position:x y;图片的坐标，值一般都为负值
+			一般用在背景图片多的网页
+	z-index
+		原因：当多个元素同时设置定位时，定位元素之间可能发生重叠问题
+		作用：调整元素的层叠顺序
+		特点：z-index默认值是0；取值越大越再上面，值为整数，并且值不能添加单位
+		注意：只有相对定位，绝对定位和固定定位有此属性，其它元素都没有此属性
+	css的常用技巧
+		margin负值的应用：
+			特点：共用一个边框线，边框线合并处不会出现加粗的样式
+			实现：给盒子设置margin负值如：margin-left:-1px; 会在鼠标放上去后少显示一个边框线
+				  解决方式：给边框设置一个hover值，在鼠标放上去后提高他的优先级并不改变它的位置，一般使用relative绝对定位实线
+		三角的写法
+			原理：盒子在width和height为0的时候就是由上下左右四个三角形组成的，当边框线变粗的时候三角就会变大，
+				  ,而且边框需要留哪一个线可以用border的边框线样式来实线，留的用solid，不需要的用dashed;所以实现原理如下
+			实现：四个三角的组成为上(下三角)、右(左三角)、下(上三角)、左(右三角);
+				  给一个盒子，将盒子的宽高设置为零，留线用solid 不要的用dashed，背景色透明用transparent;
+				  border-width：10px;控制三角的大小
+				  border-style:solid  dashed dashed dashed;按照四条线的显示顺序，上右下左，来书写，需要留那一条线就用solid
+				  				不需要的使用dashed,dashed是为了照顾i6的背景底色问题，例需要一个下三角
+				  border-style:solid dashed dashed dashed;    最后给三角一个颜色，颜色顺序也是按照上右下左
+				  border-color:red transparent transparent transparent;  transparent是为了照顾ie6 灰色底的问题。
+				  overflow:hidden;  为了照顾i6的高度问题设置
+		给网页添加ico图标
+			favicon.ico  将格式为ico的图放到跟目录下，
+						 使用<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon"/>引入进来
+		关于logo优化
+			一般情况logo给的是背景图片；我们要在logo里面放一个h1标签，就为提权，说明这个盒子很重要
+						在h1标签里面放入a标签，使a标签的大小与logo的大小一样大,给a标签里面放入网站标题(为了优化)；
+						因为a标签里面的文字对于用户体验不好，所以将a标签的文字使用首行缩进负值，将之挤出盒子，再将盒子
+						外面的内容隐藏掉就好了，如：text-indent:-2000px;overflow:hidden;实现或者使用padding值挤出盒子
+						并用overflow:hidden;隐藏;   给链接加上title值提高用户体验。
+		滑动门
+			产生原因：解决字体不一样长短
+			特点1.自适应字体字体大小
+				2.a标签转换成块级元素后，独占一行；如果用li标签包裹并且属于行内快元素，自适应内容大小。
+				3.书写方式:a标签包裹span标签
+				例：<div class="nav">
+								<a href="#">  <span>首页</span></a>
+					</div>
+				css书写为
+					清除a标签的样式，将a标签转换为块元素，可以设置高，不设置宽度，宽度会根据父盒子移动大小，在盒子内左侧浮，给背景样式，同样的原理给span，右浮动给背景;  之后在span标签内填充文字时，盒子就会根据文字的多少来自适应
+					；给hover值鼠标放上去后会切换；给a标签hover再给a标签里面的span hover鼠标放上后会同步切换背景
+						书写方式为： a:hover{} ; a:hover span {}这就叫a标签里面的span的hover书写
+						.nav a {
+						text-decoration: none;  
+						display: block;
+						line-height: 33px;
+						background: url(images/to.png) no-repeat left center;
+						float: left;
+						padding-left: 15px;
+						}
+						.nav a span {
+							display: block;
+							line-height: 33px;
+							background: url( images/to.png) no-repeat right center;
+							padding-right: 15px;
+							float: right;
+							color: #fff;
+						}
+						.nav a:hover {
+							background: url(images/ao.png) no-repeat left center;
+						}
+						.nav a:hover span {
+							background: url(images/ao.png) no-repeat right center;
+						}
+三、JS行为
+	
+				
+
+
+
+
+
+</body>
+</html>
